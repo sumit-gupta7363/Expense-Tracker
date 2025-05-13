@@ -9,8 +9,13 @@ config("./.env");
 
 const app = express();
 
-// LOCAL_HOST
-app.use(cors());
+//middlewares
+app.use(cors(
+  {
+  origin: 'https://expense-tracker-bay-psi.vercel.app',  // your frontend domain
+  credentials: true,  // allow credentials (cookies, auth headers)
+}
+));
 
 app.use(express.json());
 app.use(cookieParser());
